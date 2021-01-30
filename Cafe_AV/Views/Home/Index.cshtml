@@ -1,0 +1,14 @@
+﻿@model HomeViewModel
+
+
+
+<h2>Items of the week</h2>
+<h4>Our weekly selection - just for you!</h4>
+
+<div>
+
+    @foreach (var item in Model.ItemsOfTheWeek)
+    {
+@Html.Partial("ItemOfTheWeek", item)}
+
+</div>

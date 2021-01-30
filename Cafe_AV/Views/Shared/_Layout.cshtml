@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <link href="~/Content/site.css" rel="stylesheet" />    
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="flex-grow-0">
+        <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+            <a class="navbar-brand" asp-action="index" asp-controller="home">
+                <img src="~/images/Pop's.jpg" height="30" width="50" />
+            </a>
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a asp-controller="Item" asp-action="List" class="nav-link">Menu</a></li>
+                    <li class="nav-item"><a asp-controller="Item" asp-action="CreateItem" class="nav-link">Create</a></li>
+                </ul>
+                @await Html.PartialAsync("LoginPartial")
+            </div>
+        </nav>
+    <div>
+        @RenderBody()
+    </div>
+
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("scripts", required: false)
+    }
+</div>
+</body>
+</html>
+

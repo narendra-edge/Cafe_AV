@@ -1,0 +1,28 @@
+﻿@model ItemDetailsViewModel
+
+@{
+    ViewBag.Title = "Item Details";
+    var image = "~/Images/" + (Model.Item.ImageUrl ?? "defaultimage.jpg");
+}
+
+<div class="thumbnail">
+    
+     <img alt="@Model.Item.Name"src="@image" asp-append-version="true"/>
+    <div class="caption-full">
+        <h3 class="pull-right">@Model.Item.Price</h3>
+        <h3>
+            <a href="#">@Model.Item.Name</a>
+        </h3>
+        <h4>@Model.Item.shortDescription</h4>
+        <p>@Model.Item.LongDescription</p>
+        <p class="button">
+            <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+               asp-route-itemId="@Model.Item.ItemId">Add to cart</a>
+        </p>
+    </div>
+</div>
+@section Scripts {
+    
+<script src="~/Content/CustomScript.js"></script>
+
+}

@@ -1,0 +1,126 @@
+﻿@model Item
+
+  
+    @{ 
+        ViewBag.Titel = "Create Item";
+    }
+<div class="row mb-5">
+    <div class="col-8 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>List New Food Item</h3>
+            </div>
+            <div class="card-body">
+                <form enctype="multipart/form-data" asp-controller="Item" asp-action="CreateItem" method="post">
+
+                    <div class="form-group row">
+                        <label asp-for="Category" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="Category" class="form-control" placeholder="Category" />
+                            <span asp-validation-for="Category" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Name" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="Name" class="form-control" placeholder="Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="shortDescription" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="shortDescription" class="form-control" placeholder="ShortDescription" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="LongDescription" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="LongDescription" class="form-control" placeholder="LongDescription" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="AllergyInformation" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="AllergyInformation" class="form-control" placeholder="AllergyInformation" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Size" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Size" class="custom-select mr-sm-2"
+                                    asp-items="Html.GetEnumSelectList<Size>()">
+                                <option value="">Please Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Price" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="Price" class="form-control" placeholder="Price" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Discount" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="Discount" class="form-control" placeholder="Discount" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Quantity" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="Quantity" class="form-control" placeholder="Quantity" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ImageUrl" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <div class="custom-file">
+                                <input asp-for="ImageUrl" class="form-control custom-file-input" />
+                                <label class="custom-file-label">Choose File..</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ImageThumbnailUrl" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <div class="custom-file">
+                                <input asp-for="ImageThumbnailUrl" class="form-control custom-file-input" />
+                                <label class="custom-file-label">Choose File..</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="isItemOfTheWeek" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="isItemOfTheWeek" class="form-control" placeholder="isItemofTheWeek" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="InStock" class="col-sm-4 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="InStock" class="form-control" placeholder="InStock" />
+                            <span asp-validation-for="InStock" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <button type="submit" class="btn btn-primary btn-block">Create</button>
+                        </div>
+                    </div>
+                    @section Scripts {
+                        <script>
+                            $(document).ready(function () {
+                                $('.custom-file-input').on("change", function () {
+                                    var fileName = $(this).val().split("\\").pop();
+                                    $(this).next('.custom-file-label').html(fileName);
+                                });
+                            });
+                        </script>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
